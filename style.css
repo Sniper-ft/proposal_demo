@@ -1,0 +1,403 @@
+/* Basic CSS Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic Font and Color Scheme */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    font-size: 16px;
+    color: #333; /* Dark gray for text */
+    background-color: #f4f4f4; /* Light gray for background */
+}
+
+/* Primary and Secondary Colors (placeholders, can be refined) */
+:root {
+    --primary-color: #002768; /* Deep Blue - ZJU like */
+    --secondary-color: #28a745; /* Security Green */
+    --text-color: #333;
+    --background-light: #f4f4f4;
+    --container-bg: #fff; /* White background for content containers */
+}
+
+/* Basic Layout Styling */
+header, main, section, footer { /* Removed nav from here, will style separately */
+    display: block; /* Ensure block display for semantic elements */
+    padding: 20px;
+    margin-bottom: 15px; /* Add some space between sections */
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: var(--container-bg); /* White background for nav */
+    padding: 1rem 0; /* Padding top/bottom, no horizontal padding as inner container handles it */
+    border-bottom: 1px solid #ddd; /* Subtle border */
+    position: sticky; /* Make nav sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure nav is above other content */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Horizontal padding for content within nav */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem; /* Larger font size for logo */
+    font-weight: bold;
+    color: var(--primary-color); /* Use primary color for logo */
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Reset margin for ul */
+    padding: 0; /* Reset padding for ul */
+}
+
+nav ul li {
+    margin-left: 25px; /* Space between nav items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color); /* Standard text color for nav links */
+    padding: 0.5rem 0; /* Padding for easier clicking, adjust as needed */
+    font-weight: 500;
+}
+
+nav ul li a:hover,
+nav ul li a:focus { /* Added focus for accessibility */
+    color: var(--secondary-color); /* Change color on hover/focus */
+    border-bottom: 2px solid var(--secondary-color); /* Underline effect on hover */
+}
+
+/* Hero Section Styling */
+#hero {
+    background: linear-gradient(to right, var(--primary-color), #004080); /* Gradient from primary to a slightly lighter blue */
+    color: #fff; /* Light text color for contrast */
+    padding: 5rem 1rem; /* Generous padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Significant portion of viewport height */
+    margin-bottom: 0; /* Reset margin if it was set by general section styles */
+}
+
+#hero h1 {
+    font-size: 3rem; /* Large font size for the main title */
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+#hero p {
+    font-size: 1.2rem; /* Moderate font size for the subtitle */
+    margin-bottom: 2rem;
+    max-width: 700px; /* Limit width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex; /* Use flexbox for button alignment */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center; /* Center buttons */
+    gap: 1rem; /* Space between buttons */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem; /* Slightly more horizontal padding */
+    background-color: var(--secondary-color); /* Use secondary color for CTA */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cta-button:hover,
+.cta-button:focus { /* Added focus for accessibility */
+    background-color: #1e7e34; /* Darker shade of secondary color on hover/focus */
+    color: #fff;
+}
+
+/* About Us Section Styling (#about) */
+#about {
+    background-color: var(--container-bg); /* Ensuring it uses the white container background */
+    /* General section padding is already applied: padding: 40px 20px; */
+}
+
+#about h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#about h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#about p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    /* line-height and font-size are inherited from body, which is fine */
+}
+
+#about ul {
+    list-style: disc;
+    margin-left: 20px; /* Indentation for the list itself */
+    padding-left: 1rem; /* Padding for the content within the list */
+    margin-bottom: 1rem; /* Space after the list */
+}
+
+#about li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6; /* Explicitly set for list items if needed, though often inherited */
+}
+
+/* Core Themes Section Styling (#themes) */
+#themes {
+    background-color: var(--background-light); /* Light gray background for the section */
+    padding: 3rem 1rem; /* Padding for the section */
+}
+
+#themes h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.themes-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between cards */
+    margin-top: 2rem;
+}
+
+.theme-card {
+    background-color: var(--container-bg); /* White background for cards */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.theme-card h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color); /* Using secondary color for card titles */
+    margin-bottom: 0.75rem;
+}
+
+.theme-card p { /* General paragraph styling within theme-card */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.theme-card p:last-of-type { /* Specifically target the keywords paragraph if it's the last p */
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 1rem; /* Space before icon placeholder */
+}
+
+/* Styling for the icon placeholder div */
+.icon-placeholder {
+    min-height: 50px;
+    background-color: #eee;
+    border: 1px dashed #ccc;
+    text-align: center;
+    padding: 10px;
+    margin-top: 1rem; /* Ensure space above the placeholder */
+    margin-bottom: 0; /* Reset bottom margin if it's the last element */
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Flagship Event Section Styling (#events) */
+#events {
+    background-color: var(--container-bg); /* White background */
+    padding: 3rem 1rem;
+}
+
+#events h2 { /* Main title: "品牌活动..." */
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#events > p { /* Intro paragraph: "宣传周的定位和重要性。" */
+    font-size: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+#events h3 { /* Sub-title: "亮点活动展示" */
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.event-visual-placeholder {
+    min-height: 100px;
+    background-color: #e9e9e9;
+    border: 1px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    margin: 2rem auto;
+    max-width: 700px;
+    font-size: 0.9rem;
+    color: #777;
+    border-radius: 6px; /* Added for consistency */
+}
+
+.event-highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.event-highlights-list h4 {
+    background-color: var(--background-light); /* Slightly off-white for list items */
+    border: 1px solid #eee;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-align: left;
+    font-weight: 500; /* Make it less heavy than h3 */
+}
+
+/* Ongoing Activities Section Styling (#activities) */
+#activities {
+    background-color: var(--background-light); /* Light gray background for the section */
+    padding: 3rem 1rem; /* Padding for the section */
+}
+
+#activities h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.activities-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between items */
+    margin-top: 2rem;
+}
+
+.activity-item {
+    background-color: var(--container-bg); /* White background for items */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center; /* Centering content within the item */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+    /* Optional: Add transition for hover effect if desired */
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+/* Optional hover effect for .activity-item */
+/*
+.activity-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+*/
+
+.icon-placeholder-activity {
+    font-size: 2.5rem; /* Assuming we might use icon fonts later */
+    color: var(--secondary-color); /* Or var(--primary-color) */
+    margin-bottom: 1rem;
+    min-height: 40px; /* Ensure space */
+    /* If using a visible box placeholder instead of just text/icon font styling: */
+    /* background-color: #eee; */
+    /* border: 1px dashed #ccc; */
+    /* padding: 10px; */
+    /* display: inline-block; */ /* If it's just text "Icon" and want to center it if it's not full width */
+}
+
+.activity-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+
+/* Centered content container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: var(--container-bg);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: add a subtle shadow */
+}
+
+/* Apply container styling to main sections if desired, or a wrapper div */
+/* For now, let's assume main will act as a primary container for sections */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* Reset padding if sections inside will have their own */
+    background-color: var(--container-bg); /* White background for the main content area */
+}
+
+section {
+    padding: 40px 20px; /* More vertical padding for sections */
+    margin-bottom: 0; /* Remove bottom margin if main handles spacing or it's managed by borders */
+    border-bottom: 1px solid #eee; /* Separator for sections */
+}
+
+section:last-child {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Example of using primary color for header (can be adjusted) */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0; /* Full width, padding inside container if any */
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333; /* Dark footer */
+    color: #f4f4f4; /* Light text for footer */
+    margin-top: 30px; /* Space above footer */
+}
