@@ -1,0 +1,730 @@
+/* Basic CSS Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic Font and Color Scheme */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    font-size: 16px;
+    background-color: #121212; /* Very dark gray, near black */
+    color: #e0e0e0; /* Light gray for default text */
+}
+
+/* Primary and Secondary Colors (placeholders, can be refined) */
+:root {
+    /* --primary-color: #0d47a1; */ /* Original ZJU Blue - kept for reference */
+    --primary-accent-blue: #3b82f6; /* Brighter blue for accents on dark theme */
+    --secondary-color: #28a745; /* Security Green - should stand out well */
+    
+    --text-color: #e0e0e0; /* Default light gray text */
+    --container-bg: #1e1e1e; /* Slightly lighter than body for general containers/cards */
+    --background-light: #2a2a2a; /* For alternating sections or hover effects */
+
+    /* New Dark Theme Gradients */
+    --dark-gradient-primary: linear-gradient(135deg, var(--primary-accent-blue) 0%, #1e63c2 100%);
+    --dark-gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #1e7e34 100%);
+    --dark-card-bg: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+
+    /* Old variables to review/remove - kept for reference during transition */
+    /* --primary-color: #002768; */ /* Original ZJU like */
+    /* --tech-gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%); */
+    /* --tech-gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, #218838 100%); */
+    /* --tech-card-bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%); */
+    /* --section-bg-darker: #1a1d24; */ /* Now similar to --container-bg or --background-light */
+    /* --text-color-dark-bg: #e0e0e0; */ /* Now same as --text-color */
+}
+
+/* Basic Layout Styling */
+header, main, section, footer { /* Removed nav from here, will style separately */
+    display: block; /* Ensure block display for semantic elements */
+    padding: 3rem 1rem; /* Updated default padding */
+    margin-bottom: 0; /* Will be handled by border or specific section margins */
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: #181818; /* Very dark, slightly distinct from body */
+    padding: 1rem 0; /* Padding top/bottom, no horizontal padding as inner container handles it */
+    border-bottom: 1px solid #333; /* Updated border */
+    position: sticky; /* Make nav sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure nav is above other content */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Horizontal padding for content within nav */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem; /* Larger font size for logo */
+    font-weight: bold;
+    color: #fff; /* Logo color on dark nav - remains white */
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Reset margin for ul */
+    padding: 0; /* Reset padding for ul */
+}
+
+nav ul li {
+    margin-left: 30px; /* Increased space between nav items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ccc; /* Lighter text color for nav links on dark nav - remains #ccc */
+    padding: 0.5rem 0; /* Padding for easier clicking, adjust as needed */
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+nav ul li a:hover,
+nav ul li a:focus { /* Added focus for accessibility */
+    color: var(--secondary-color); /* Change color on hover/focus - remains secondary-color */
+    border-bottom: 2px solid var(--secondary-color); /* Underline effect on hover */
+}
+
+/* Hero Section Styling */
+#hero {
+    background: var(--dark-gradient-primary); /* Updated background */
+    color: #fff; /* Light text color for contrast */
+    padding: 5rem 1rem; /* Generous padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Significant portion of viewport height */
+    margin-bottom: 0; /* Reset margin if it was set by general section styles */
+}
+
+#hero h1 {
+    font-size: 3rem; /* Large font size for the main title */
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+#hero p {
+    font-size: 1.2rem; /* Moderate font size for the subtitle */
+    margin-bottom: 2rem;
+    max-width: 700px; /* Limit width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex; /* Use flexbox for button alignment */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center; /* Center buttons */
+    gap: 1rem; /* Space between buttons */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem; /* Slightly more horizontal padding */
+    background: var(--dark-gradient-secondary); /* Updated background */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none; /* Removed border - already none */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Updated transition */
+}
+
+.cta-button:hover,
+.cta-button:focus { /* Added focus for accessibility */
+    background: var(--dark-gradient-secondary); /* Keep gradient, or specify hover gradient */
+    color: #fff;
+    transform: translateY(-2px); /* Add transform */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Adjusted shadow for dark */
+}
+
+/* About Us Section Styling (#about) */
+#about {
+    background-color: var(--container-bg); /* Updated to dark theme container bg */
+    /* General section padding is already applied: padding: 40px 20px; */
+}
+
+#about h2 {
+    font-size: 2rem;
+    color: #fff; /* Updated text color */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#about h3 {
+    font-size: 1.5rem;
+    color: #fff; /* Updated text color */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#about p {
+    color: var(--text-color); /* Inherits from body, should be light gray */
+    margin-bottom: 1rem;
+    /* line-height and font-size are inherited from body, which is fine */
+}
+
+#about ul {
+    list-style: disc;
+    margin-left: 20px; /* Indentation for the list itself */
+    padding-left: 1rem; /* Padding for the content within the list */
+    margin-bottom: 1rem; /* Space after the list */
+}
+
+#about li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6; /* Explicitly set for list items if needed, though often inherited */
+}
+
+/* Core Themes Section Styling (#themes) */
+#themes {
+    background-color: #1a1a1a; /* Specific dark background */
+    padding: 3rem 1rem; /* Padding for the section */
+}
+
+#themes h2 {
+    font-size: 2rem;
+    color: #fff; /* Updated text color */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.themes-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+    gap: 1.5rem; /* Space between cards */
+    margin-top: 2rem;
+    align-items: stretch; /* Changed from 'start' to 'stretch' */
+}
+
+.theme-card {
+    background: var(--dark-card-bg); /* Updated background */
+    border: 1px solid #444; /* Updated border */
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Updated shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added */
+    flex-direction: column; /* Added */
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.theme-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-accent-blue); /* Updated text color */
+    margin-bottom: 0.75rem;
+    flex-shrink: 0; /* Added */
+}
+
+.theme-card p { /* General paragraph styling within theme-card */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    color: var(--text-color); /* Inherits from body, should be light gray */
+}
+
+.theme-card p:last-of-type { /* Specifically target the keywords paragraph if it's the last p */
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 1rem; /* Space before icon placeholder */
+}
+
+/* Styling for the icon placeholder div */
+.icon-placeholder {
+    color: var(--secondary-color); /* Icon color - remains secondary-color */
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem; /* Icon size */
+    min-height: auto; /* Remove fixed min-height */
+    background-color: transparent;
+    border: none;
+    padding: 0; /* Reset padding */
+    margin-top: 1rem; /* Keep or adjust as needed */
+    flex-shrink: 0; /* Added */
+}
+
+/* Flagship Event Section Styling (#events) */
+#events {
+    background-color: var(--container-bg); /* Updated to dark theme container bg */
+    padding: 3rem 1rem;
+}
+
+#events h2 { /* Main title: "品牌活动..." */
+    font-size: 2rem;
+    color: #fff; /* Updated text color */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#events > p { /* Intro paragraph: "宣传周的定位和重要性。" */
+    font-size: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.6;
+    color: var(--text-color); /* Inherits from body, should be light gray */
+}
+
+#events h3 { /* Sub-title: "亮点活动展示" */
+    font-size: 1.7rem;
+    color: #fff; /* Updated text color */
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.event-visual-placeholder {
+    min-height: 100px;
+    background-color: #e9e9e9;
+    border: 1px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    margin: 2rem auto;
+    max-width: 700px;
+    font-size: 0.9rem;
+    color: #777;
+    border-radius: 6px; /* Added for consistency */
+}
+
+.event-highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.event-highlights-list h4 {
+    background-color: var(--background-light); /* Slightly off-white for list items */
+    border: 1px solid #333; /* Darker border */
+    padding: 1rem 1.5rem;
+    border-radius: 6px 6px 0 0; /* Rounded top corners only */
+    font-size: 1.1rem;
+    color: var(--text-color); /* Inherits from body, should be light gray */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adjusted shadow for dark */
+    text-align: left;
+    font-weight: 500; /* Make it less heavy than h3 */
+    cursor: pointer; /* Add cursor pointer to indicate clickable */
+}
+
+.event-highlights-list h4:focus { /* Basic focus style for keyboard navigation if tabindex were added */
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Styling for .event-details (toggleable content in #events) */
+.event-details {
+    padding: 10px 15px;
+    background-color: #2c2c2c; /* Darker background for details */
+    border: 1px solid #444; /* Darker border */
+    border-top: none; /* Avoid double border with the h4 */
+    margin-top: 0; /* Connect directly to the h4 */
+    border-radius: 0 0 6px 6px; /* Match h4's bottom corners */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ccc; /* Lighter text for details */
+    /* display: none; is handled by inline style initially, JS will toggle */
+}
+
+/* Ongoing Activities Section Styling (#activities) */
+#activities {
+    background-color: #1a1a1a; /* Specific dark background */
+    padding: 3rem 1rem; /* Padding for the section */
+}
+
+#activities h2 {
+    font-size: 2rem;
+    color: #fff; /* Updated text color */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.activities-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between items */
+    margin-top: 2rem;
+    align-items: stretch; /* Changed from 'start' to 'stretch' */
+}
+
+/* Styles for .activity-item and .icon-placeholder-activity are now removed/commented out */
+/*
+.activity-item {
+    background: var(--dark-card-bg);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-placeholder-activity {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    min-height: auto;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.activity-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+*/
+
+/* New Styles for Activity List */
+.activity-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+    max-width: 700px; 
+    margin: 2rem auto 0 auto; 
+}
+
+.activity-entry {
+    background-color: var(--container-bg); 
+    border: 1px solid #444; 
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+}
+
+.activity-entry-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.activity-entry-icon {
+    font-size: 1.5rem; 
+    color: var(--secondary-color); 
+    margin-right: 10px;
+}
+
+.activity-entry-header h4 {
+    font-size: 1.2rem; 
+    color: var(--primary-accent-blue); 
+    font-weight: 500; 
+    margin: 0; 
+}
+
+.activity-entry-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color); 
+    margin: 0; 
+}
+
+/* Get Involved Section Styling (#get-involved) */
+#get-involved {
+    background-color: var(--container-bg); /* Uses the general dark container bg */
+    color: var(--text-color); /* Inherits from body */
+    padding: 3rem 1rem;
+}
+
+#get-involved h2 {
+    font-size: 2rem;
+    color: #fff; /* White text on dark background */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#get-involved .content-block {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Center the text within each block */
+    margin-bottom: 2rem; /* Increased bottom margin for spacing between blocks */
+}
+
+#get-involved h3 {
+    font-size: 1.5rem;
+    color: #fff; /* White text on dark background */
+    margin-top: 1.5rem; /* This will apply to the first h3 as well */
+    margin-bottom: 0.75rem;
+}
+
+#get-involved p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color); /* Inherits from body */
+    margin-bottom: 1rem; /* Last p in a content-block will have this margin */
+}
+
+/* Footer Styling */
+footer {
+    background: #000; /* Black background */
+    color: #aaa; /* Updated text color */
+    padding: 2.5rem 1rem; /* Increased padding */
+    text-align: center;
+    margin-top: 30px; /* Ensure space from the last section, if not already handled by main's bottom padding */
+    border-top: 3px solid var(--primary-accent-blue); /* Updated border color */
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem; /* Slightly more margin for readability */
+    line-height: 1.5;
+}
+
+footer p:last-child {
+    margin-bottom: 0; /* No margin for the last paragraph */
+}
+
+/* Placeholder for footer links, if any are added later */
+footer a {
+    color: var(--secondary-color); /* Green links for contrast and theme consistency - remains secondary-color */
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+    text-decoration: underline;
+    color: #34c051; /* Slightly lighter green on hover - remains the same */
+}
+
+
+/* Centered content container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: var(--container-bg);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: add a subtle shadow */
+}
+
+/* Apply container styling to main sections if desired, or a wrapper div */
+/* For now, let's assume main will act as a primary container for sections */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* Reset padding if sections inside will have their own */
+    background-color: var(--container-bg); /* White background for the main content area */
+}
+
+section {
+    padding: 3rem 1rem; /* Using the updated default section padding */
+    margin-bottom: 0; /* Remove bottom margin if main handles spacing or it's managed by borders */
+    border-bottom: 1px solid #333; /* Darker border for sections */
+}
+
+section:last-child {
+    border-bottom: none; /* No border for the last section */
+}
+
+/* Example of using primary color for header (can be adjusted) */
+header {
+    background-color: #121212; /* Match body background */
+    color: var(--text-color);
+    padding: 20px 0; /* Full width, padding inside container if any */
+    text-align: center;
+    border-bottom: 1px solid #333; /* Added border */
+}
+
+/* Footer is handled separately below, this duplicate needs to be removed or merged */
+/*
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #f4f4f4;
+    margin-top: 30px;
+}
+*/
+
+/* Responsive Design - Media Queries */
+
+/* Tablets and Small Desktops */
+@media (max-width: 992px) {
+    /* Adjust grid items if needed */
+    /* .themes-grid-container rule at this breakpoint will be reviewed. Keeping auto-fit for now. */
+    /* If base is 2 columns, this auto-fit might still result in 2 columns if space allows. */
+    /* Consider if 1 column is desired for all tablets, or just smaller ones. */
+    .themes-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .activities-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    /* Adjust main content container for slightly less width if needed */
+    .nav-container, main {
+        max-width: 960px;
+    }
+}
+
+/* Mobile - Landscape and Portrait (Typical Tablets down to larger phones) */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2.2rem;
+    }
+    #hero p {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation stacked */
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start; /* Changed to flex-start */
+    }
+    .nav-container .logo {
+        margin-bottom: 1rem; /* Space between logo and nav links */
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start; /* Changed to flex-start */
+        width: 100%;
+        margin-top: 0; /* Reset margin-top as .logo has margin-bottom */
+    }
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 0.8rem;
+        width: 100%;
+        text-align: left; /* Changed to left */
+    }
+    nav ul li a {
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: none; /* Remove border for stacked view */
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+        background-color: var(--background-light); /* Add a subtle background on hover/focus for stacked links */
+        border-bottom: none; /* Ensure border is still removed */
+    }
+
+
+    /* Adjust section padding */
+    section { padding: 2rem 1rem; }
+    #hero { padding: 3rem 1rem; } /* Keep hero padding a bit more generous */
+
+    /* Adjust grid minmax for slightly smaller cards before going full-width */
+    .themes-grid-container { /* Forcing single column for standard mobile/tablet portrait */
+        grid-template-columns: 1fr;
+    }
+    .activities-grid-container { /* Keeping auto-fit for activities, might need separate review if fixed columns are desired */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    /* Center content blocks in #get-involved if not already */
+    #get-involved .content-block {
+        text-align: center; /* Ensure this is applied if not already default */
+    }
+}
+
+/* Mobile - Portrait (Smaller phones) */
+@media (max-width: 480px) {
+    /* Adjust base font slightly if needed, or target h1,p etc directly */
+    /* html { font-size: 15px; } */ /* Example: Could adjust if necessary */
+
+    #hero h1 {
+        font-size: 1.8rem;
+    }
+    #hero p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .hero-buttons {
+        flex-direction: column; /* Stack CTA buttons */
+        gap: 0.75rem;
+    }
+
+
+    /* .themes-grid-container rule at 480px is now redundant due to 768px rule setting it to 1fr */
+    .activities-grid-container { /* Ensuring activities also go to single column on smallest screens */
+        grid-template-columns: 1fr; /* Single column for cards */
+    }
+
+    /* Further reduce padding for very small screens */
+    section { padding: 1.5rem 0.75rem; }
+    #hero { padding: 2.5rem 0.75rem; }
+
+    /* General heading adjustments for smaller screens */
+    h1, .h1-like { font-size: 1.8rem; } /* For consistency if other h1s exist */
+    h2, .h2-like { font-size: 1.6rem; } /* For section titles */
+    h3, .h3-like { font-size: 1.3rem; } /* For sub-section titles */
+
+    #about h2, #themes h2, #events h2, #activities h2, #get-involved h2 {
+        font-size: 1.6rem; /* Specific overrides if needed */
+    }
+    #about h3, #events h3, #get-involved h3 { /* target .content-block h3 as well */
+        font-size: 1.3rem;
+    }
+    .theme-card h3 { /* Theme card titles */
+        font-size: 1.2rem;
+    }
+
+    /* Footer adjustments */
+    footer {
+        padding: 1.5rem 0.75rem;
+    }
+    footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* General "Tech" Accents - Section Title Underlines */
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color); /* Remains secondary color */
+    margin: 10px auto 0;
+}
+
+#hero h1::after { /* For the main hero title */
+    content: '';
+    display: block;
+    width: 100px; /* Wider for H1 */
+    height: 4px;
+    background: #fff; /* White on dark hero background - remains white */
+    margin: 15px auto 0;
+}
+
+/* Specific overrides for dark backgrounds or different color needs */
+#get-involved h2::after {
+    background: var(--secondary-color); /* Green on dark background for contrast */
+}
+
+/* If any other section title needs a different color underline */
+/* Example:
+#about h2::after {
+    background: var(--primary-color);
+}
+*/
+
+/* Webkit scrollbar styling */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #1e1e1e; }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--secondary-color); }
